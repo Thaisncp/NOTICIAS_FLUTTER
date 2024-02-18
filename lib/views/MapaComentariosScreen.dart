@@ -87,7 +87,7 @@ class _MapaComentariosScreenState extends State<MapaComentariosScreen> {
     Colors.blueGrey,
   ];
   List<Marker> _crearMarcadores(List<dynamic> comentarios) {
-    print("Cantidad de comentarios: ${comentarios.length}"); // Imprime la cantidad de comentarios
+    print("Cantidad de comentarios: ${comentarios.length}");
 
     return comentarios.map((comentario) {
       int colorIndex = comentarios.indexOf(comentario) % colores.length;
@@ -117,7 +117,7 @@ class _MapaComentariosScreenState extends State<MapaComentariosScreen> {
                         color: colores[colorIndex],
                         size: 40,
                       ),
-                      content: Text(comentario['cuerpo'].toString()),
+                      content: Text(comentario['cuerpo'].toString(),style: TextStyle(color: Colors.white)),
                       actions: [
                         TextButton(
                           onPressed: () {

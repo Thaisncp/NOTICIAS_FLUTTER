@@ -5,8 +5,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Conexion {
-  final String URL = "http://10.20.137.243:3005/api/";
-  final String URL_MEDIA = "http://10.20.137.243:3005/multimedia/";
+  final String URL = "http://192.168.1.20:3005/api/";
+  final String URL_MEDIA = "http://192.168.1.20:3005/multimedia/";
   static bool NO_TOKEN = false;
   //news-token
   Future<RespuestaGenerica> solicitudGet(String recurso, bool token) async{

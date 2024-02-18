@@ -31,14 +31,14 @@ class _DetalleNoticiaScreenState extends State<DetalleNoticiaScreen> {
   int currentPage = 0;
 
 
-  Future<Position> _Locacion() async {
+  Future<Position> _Lugar() async {
     LocationPermission permission;
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
         const SnackBar msg = SnackBar(
-            content: Text('Se necesitan permisos de ubicacion para comentar'));
+            content: Text('Permisos de ubicacion necesarios'));
         ScaffoldMessenger.of(context).showSnackBar(msg);
         return Future.error('error');
       }
@@ -48,19 +48,19 @@ class _DetalleNoticiaScreenState extends State<DetalleNoticiaScreen> {
 
   }
 
-  void getCurrentLocation(param) async {
-    Position posicion;
+  void getLugar(param) async {
+    Position ubicacion;
 
     try {
-      posicion = await _Locacion();
-      print(posicion);
+      ubicacion = await _Lugar();
+      print(ubicacion);
 
-      latitud = posicion.latitude;
-      longitud = posicion.longitude;
+      latitud = ubicacion.latitude;
+      longitud = ubicacion.longitude;
 
       _registrar(param);
     } catch (e) {
-      print('Error al obtener la posición: $e');
+      print('Error en la ubicacion: $e');
     }
   }
 
@@ -194,7 +194,7 @@ class _DetalleNoticiaScreenState extends State<DetalleNoticiaScreen> {
             ElevatedButton(
               onPressed: () async {
                 // Agregar lógica para agregar comentario
-                getCurrentLocation(widget.noticia.external_id!);
+                getLugar(widget.noticia.external_id!);
               },
               child: Text('Agregar Comentario'),
             ),

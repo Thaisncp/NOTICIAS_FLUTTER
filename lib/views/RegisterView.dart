@@ -38,8 +38,9 @@ class _RegisterViewState extends State<RegisterView> {
         servicio.registrarUsuario(mapa).then((value) async {
           if (value.code == 200) {
             final SnackBar msg =
-            SnackBar(content: Text('Success: ${value.tag}'));
+            SnackBar(content: Text('Success: registrado con exito'));
             ScaffoldMessenger.of(context).showSnackBar(msg);
+            Navigator.pushNamed(context, "/home");
           } else {
             log(value.msg.toString());
             log(value.code.toString());

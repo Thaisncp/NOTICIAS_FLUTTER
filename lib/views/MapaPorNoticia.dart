@@ -1,12 +1,9 @@
 import 'dart:convert';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:http/http.dart' as http;
 import 'package:latlong2/latlong.dart';
 import 'package:unidad3/controls/Conexion.dart';
-
 import '../models/NoticiaModel.dart';
 import 'MenuBarP.dart';
 
@@ -90,7 +87,7 @@ class _MapaPorNoticiaState extends State<MapaPorNoticia> {
     Colors.blueGrey,
   ];
   List<Marker> _crearMarcadores(List<dynamic> comentarios) {
-    print("Cantidad de comentarios: ${comentarios.length}"); // Imprime la cantidad de comentarios
+    print("Cantidad de comentarios: ${comentarios.length}");
 
     return comentarios.map((comentario) {
       int colorIndex = comentarios.indexOf(comentario) % colores.length;
@@ -120,7 +117,7 @@ class _MapaPorNoticiaState extends State<MapaPorNoticia> {
                         color: colores[colorIndex],
                         size: 40,
                       ),
-                      content: Text(comentario['cuerpo'].toString()),
+                      content: Text(comentario['cuerpo'].toString(), style: TextStyle(color: Colors.white)),
                       actions: [
                         TextButton(
                           onPressed: () {

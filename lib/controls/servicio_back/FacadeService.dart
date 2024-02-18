@@ -6,7 +6,6 @@ import 'package:unidad3/controls/servicio_back/RespuestaGenerica.dart';
 import 'package:http/http.dart' as http;
 
 import '../utiles/Utiles.dart';
-import 'comentarioWS.dart';
 
 class FacadeService {
   Conexion c = Conexion();
@@ -29,7 +28,6 @@ class FacadeService {
           isw.msg = mapa['msg'];
           isw.tag  = mapa['tag'];
           isw.datos = mapa['datos'];
-          //return _response(mapa['code'], mapa['msg'], mapa['datos']);
         }
         //log("Page no found");
       }else{
@@ -38,16 +36,12 @@ class FacadeService {
         isw.msg = mapa['msg'];
         isw.tag  = mapa['tag'];
         isw.datos = mapa['datos'];
-        //return _response(mapa['code'], mapa['msg'], mapa['datos']);
-        //log(response.body);
       }
-      //return RespuestaGenerica();
     }catch(e){
       isw.code = 500;
       isw.msg = 'Error';
       isw.tag  = 'Error inesperado';
       isw.datos = {};
-      //return _response(500, "Error inesperado", []);
     }
     return isw;
   }
@@ -77,15 +71,11 @@ class FacadeService {
           Map<dynamic, dynamic> mapa = jsonDecode(response.body);
           isw.code = mapa['code'];
           isw.msg = mapa['msg'];
-          //isw.tag = mapa['tag'];
-          //isw.datos = {};
         }
       } else {
         Map<dynamic, dynamic> mapa = jsonDecode(response.body);
         isw.code = mapa['code'];
         isw.msg = mapa['msg'];
-        //isw.tag = mapa['tag'];
-        //isw.datos = {};
       }
     } catch (e) {
       isw.code = 500;
@@ -234,7 +224,7 @@ class FacadeService {
     return isw;
   }
 
-  Future<comentarioWS> listarComentarios() async {
+  /**Future<comentarioWS> listarComentarios() async {
     Utiles util = Utiles();
     var token = await util.getValue("token");
 
@@ -270,5 +260,5 @@ class FacadeService {
       isw = comentarioWS.fromMap([], 'Error $e', 500);
     }
     return isw;
-  }
+  }*/
 }
